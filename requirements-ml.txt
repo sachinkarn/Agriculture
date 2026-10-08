@@ -1,0 +1,4 @@
+# Needed to TRAIN the disease model and to RUN it in the API.
+# CPU-only install:  pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+torch>=2.2
+torchvision>=0.17

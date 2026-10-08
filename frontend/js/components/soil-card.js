@@ -1,0 +1,2 @@
+function soilCard(s){const r=soilScore(s);
+ return `<h3>Soil summary</h3>`+[["Nitrogen",r.lv.n],["Phosphorus",r.lv.p],["Potassium",r.lv.k],["pH",r.lv.ph+" ("+s.ph+")"],["Moisture",s.m+"%"]].map(x=>`<div class="row"><span class="mut">${x[0]}</span><b>${x[1]}</b></div>`).join("")+`<div class="alert ${r.prob.length?"a-red":"a-grn"}">Main concern: ${r.main}</div><div class="bar" style="margin:12px 0 4px"><i style="width:${r.sc}%"></i></div><p class="mut" style="margin:0 0 10px;font-size:13px">Soil health ${r.sc} / 100</p><h3>Fertilizer advice</h3>`+list(r.adv)}

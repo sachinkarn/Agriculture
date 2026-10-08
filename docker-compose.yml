@@ -1,0 +1,25 @@
+# docker compose up --build   ->  http://localhost:8000
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: kisan
+      POSTGRES_PASSWORD: kisan
+      POSTGRES_DB: kisanmitra
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U kisan -d kisanmitra"]
+      interval: 5s
+      retries: 10
+  api:
+    build: .
+    environment:
+      DATABASE_URL: postgresql://kisan:kisan@db:5432/kisanmitra
+      MODEL_DIR: /app/backend/models
+    volumes:
+      - ./backend/models:/app/backend/models   # put disease_model.pt + labels.json here
+    ports: ["8000:8000"]
+    depends_on:
+      db: {condition: service_healthy}
+volumes:
+  pgdata:
