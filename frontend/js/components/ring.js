@@ -1,0 +1,2 @@
+function ringSVG(v){const r=70,c=2*Math.PI*r,col=v>=75?"var(--g2)":v>=55?"var(--amb)":"var(--red)";
+ return `<div class="ring"><svg width="170" height="170" viewBox="0 0 170 170"><circle cx="85" cy="85" r="${r}" fill="none" stroke="var(--tint)" stroke-width="14"/><circle cx="85" cy="85" r="${r}" fill="none" stroke="${col}" stroke-width="14" stroke-linecap="round" stroke-dasharray="${c*v/100} ${c}"/></svg><b>${v}<span>Farm health</span></b></div>`}

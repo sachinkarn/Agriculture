@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.env
+.venv/
+backend/*.db
+backend/models/*.pt
+backend/models/labels.json
+backend/models/metrics.json
